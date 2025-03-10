@@ -1,0 +1,23 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/img.png</param>
+        <param name="plugin-logo">images/img.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="tag-validator"/>
+    <repository-hook key="tag-validation-hook" name="Tag validation Hook for WSO2"
+                     i18n-name-key="hook.guide.logginghook.name"
+                     class="org.ycr.bitbucket.impl.TagValidationHook">
+        <description key="hook.guide.logginghook.description" >Validates tags against branches</description>
+        <icon>images/img.png</icon>
+        <config-form name="Simple Hook Config" key="simpleHook-config">
+            <view>com.atlassian.bitbucket.repository.hook.ref.formContents</view>
+            <directory location="/static/"/>
+        </config-form>
+    </repository-hook>
+
+</atlassian-plugin>

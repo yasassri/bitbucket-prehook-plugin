@@ -1,0 +1,36 @@
+{namespace com.atlassian.bitbucket.repository.hook.ref}
+
+/**
+ * Template to render the form for tag validation configuration.
+ *
+ * @param config Configuration map that contains the values for the form fields.
+ * @param? errors Optional map containing error messages for fields.
+ */
+{template .formContents}
+    {call bitbucket.component.branchSelector.field}
+        {param id: 'ref-id' /}
+        {param initialValue: $config['ref-id'] /}
+        {param labelText: 'Release Branch' /}
+        {param descriptionText: 'Release tags will be compared against this branch when release tags are created.' /}
+        {param errorTexts: $errors ? $errors['ref-id'] : null /}
+        {param showTags: true /}
+    {/call}
+
+    {call aui.form.textField}
+        {param id: 'release-tag-regex' /}
+        {param value: $config['release-tag-regex'] /}
+        {param labelContent: 'Release tag regex pattern' /}
+        {param descriptionText: 'The tag name will be compared against this regex pattern. Keep blank to use the default pattern' /}
+        {param extraClasses: 'long' /}
+        {param errorTexts: $errors ? $errors['release-tag-regex'] : null /}
+    {/call}
+
+    {call aui.form.textField}
+        {param id: 'env-prefixes' /}
+        {param value: $config['env-prefixes'] ? $config['env-prefixes'] : 'dev,cqa' /}
+        {param labelContent: 'Environment prefixes' /}
+        {param descriptionText: 'Comma separated list of env prefixes eng: dev,cqa' /}
+        {param extraClasses: 'long' /}
+        {param errorTexts: $errors ? $errors['release-tag-regex'] : null /}
+    {/call}
+{/template}
