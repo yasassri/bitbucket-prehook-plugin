@@ -65,7 +65,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Author
 
 - [yasassri](https://github.com/yasassri)
-
----
-
-Let me know if you want to include more details or usage examples!
